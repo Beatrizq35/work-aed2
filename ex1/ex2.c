@@ -77,16 +77,17 @@ void liberaLista(Lista *l) {
 ** Aloca e retorna uma lista com os mesmos valores do Vetor (TAD do EX1)
 */
 Lista* criaListaDoVetor(Vetor *v) {
-    Lista *l  = criaLista();
-    int    tam = tamanhoVetor(v);
+    Lista* criaListaDoVetor(Vetor *v) {
+    Lista *l = criaLista();
+    int tam = tamanhoVetor(v);
 
-    printf("Criando lista encadeada com %d elementos... Aguarde.\n", tam);
-    for (int i = 0; i < tam; i++) {
-        insereNaLista(l, acessaElemento(v, i));
+    printf("Criando lista com %d elementos...\n", tam);
+    // Percorre do último para o primeiro
+    for (int i = tam - 1; i >= 0; i--) {
+        insereNaLista(l, acessaElemento(v, i)); 
     }
-    printf("Lista encadeada criada com sucesso!\n");
-
     return l;
+    }
 }
 
 /* Funcao buscaSequencialLista
