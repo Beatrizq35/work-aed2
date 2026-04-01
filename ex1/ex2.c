@@ -77,7 +77,6 @@ void liberaLista(Lista *l) {
 ** Aloca e retorna uma lista com os mesmos valores do Vetor (TAD do EX1)
 */
 Lista* criaListaDoVetor(Vetor *v) {
-    Lista* criaListaDoVetor(Vetor *v) {
     Lista *l = criaLista();
     int tam = tamanhoVetor(v);
 
@@ -87,7 +86,6 @@ Lista* criaListaDoVetor(Vetor *v) {
         insereNaLista(l, acessaElemento(v, i)); 
     }
     return l;
-    }
 }
 
 /* Funcao buscaSequencialLista

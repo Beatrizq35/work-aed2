@@ -4,7 +4,7 @@
 #include "EX1.h"
 #include "EX2.h"
 
-#define TAM       1000000
+#define TAM       100000
 #define EXECUCOES 30
 
 int main(void) {
