@@ -29,7 +29,7 @@ inicio = clock();
 insertionSort(vetorTeste, 100000);
 fim = clock();
 tempo =((double) (fim-inicio)/ CLOCKS_PER_SEC);
-printf("Insertion sort: %f s\n", tempo);
+printf("InsertionSort: %f s\n", tempo);
 somaInsertion += tempo;
 
 //testando o bolha
@@ -38,7 +38,7 @@ inicio= clock();
 BubbleSort(vetorTeste, TAMANHO);
 fim = clock();
 tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("tempo bolha:%f\n", tempo);
+printf("BubbleSort: %f s\n", tempo);
 somaBolha += tempo;
 
 //testando o selection 
@@ -47,7 +47,7 @@ inicio = clock();
 selectionSort(vetorTeste,TAMANHO);
 fim = clock();
 tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("tempo selection:%f\n", tempo);
+printf("SelectionSort: %f s\n", tempo);
 somaSelection += tempo;
 
 // testatando o quick
@@ -56,7 +56,7 @@ inicio = clock();
 quickSort(vetorTeste,0,TAMANHO-1);
 fim = clock();
 tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("tempo quicksort:%f\n", tempo);
+printf("Quicksort: %f s\n", tempo);
 somaQuick += tempo;
 
 // testando o mergesort 
@@ -66,7 +66,7 @@ inicio= clock();
 mergeSort(vetorTeste,0, TAMANHO-1);
 fim = clock();
 tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("tempo mergesort:%f\n", tempo);
+printf("MergeSort: %f s\n", tempo);
 somaMerge += tempo;
 }
 // calculo das medias 
@@ -78,14 +78,10 @@ double mediaMerge = somaMerge / RODADAS;
 
 printf("\n--------------Resultados Medias de Tempo para %d rodadas--------------", RODADAS);
 
-printf("\n\nMedia Bolha: %f s\n", mediaBolha);
+printf("\n\nMedia Bubble: %f s\n", mediaBolha);
 printf("Media Insertion: %f s\n", mediaInsertion);
 printf("Media Selection: %f s\n", mediaSelection);
 printf("Media Quick: %f s\n", mediaQuick);
 printf("Media Merge: %f s\n", mediaMerge);
 
-
-
 }
-
-

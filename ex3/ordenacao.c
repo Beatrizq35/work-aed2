@@ -4,18 +4,19 @@
 #include <string.h> //para usar o memcpy para copiar o vetor base pro de teste
 #include "pontoordenacao.h"
 //Ao usar o ponteiro *v, você está passando apenas o endereço de memória onde o vetor começa. É muito mais rápido e econômico.
-void insertionSort(int *v, int tamanho){
-int i, Pivot, j;
 
-for(i=1;i<tamanho;i++){
-Pivot =v[i];
-j=i-1;
-while(j>=0 && v[j]>Pivot){
-v[j+1] = v[j];
-j=j-1;
-}
-v[j+1] = Pivot;
-}
+void insertionSort(int *v, int tamanho){
+    int i, Pivot, j;
+
+    for(i=1;i<tamanho;i++){
+        Pivot =v[i];
+        j=i-1;
+        while(j>=0 && v[j]>Pivot){
+            v[j+1] = v[j];
+            j=j-1;
+        }
+        v[j+1] = Pivot;
+    }
 }
 
 void selectionSort(int *v, int tamanhoVetor){
@@ -38,28 +39,28 @@ for(i=0;i<penultimo;i++) {
 }
 
 void quickSort(int *v, int inicio, int fim){
- unsigned i,j;
+ int i,j;
  int Pivot;
  int tmp;
 
  if(inicio < fim){
- Pivot = v[(inicio+fim)/2];
- i= inicio;
- j=fim;
+    Pivot = v[(inicio+fim)/2];
+    i= inicio;
+    j=fim;
  while(i<=j){
- while(v[i]< Pivot) i++;
- while(v[j]>Pivot) j--;
-    if(i<=j){
-        tmp = v[i];
-        v[i] = v[j];
-        v[j] = tmp;
-        i++;
-        j--; 
-    }
+    while(v[i]< Pivot) i++;
+    while(v[j]>Pivot) j--;
+        if(i<=j){
+            tmp = v[i];
+            v[i] = v[j];
+            v[j] = tmp;
+            i++;
+            j--; 
+        }
 }
     quickSort(v,inicio,j);
     quickSort(v,i, fim);
-}
+    }
 }
 
 //void BubbleSort(int *v, int tamanho){
