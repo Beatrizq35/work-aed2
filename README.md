@@ -1,18 +1,20 @@
 # trabalho de aed2
+# Trabalho 1 — AED2: Busca e Comparação de Estruturas
+
+Este projeto contém a implementação e análise de desempenho de algoritmos de busca e ordenação, desenvolvidos para a disciplina de **Algoritmos e Estruturas de Dados 2 (UFAM)**. O foco é a medição empírica de tempo de execução, média e desvio padrão em diferentes estruturas de dados.
+
+
 ## 🛠️ Compilação e Execução
 
-Este projeto utiliza o compilador **GCC**. Para compilar os arquivos do exercício 1 e 2:
+raiz do projeto (`Trabalho1_AED2/`) para executar os comandos abaixo:
 
-\```bash
-gcc main.c ex1.c ex2.c -o exec_busca -lm
-\```
-
-* `main.c`: Arquivo principal.
-* `ex1.c` e `ex2.c`: Implementações dos TADs.
-* `-o exec_busca`: Define o nome do executável.
-* `-lm`: Linka a biblioteca matemática (caso use `<math.h>`).
-
-Para rodar:
-\```bash
-./exec_busca
-\```
+### Questão 1 e 2 (Busca Sequencial e Binária)
+Este comando compila o programa de busca em vetores e listas encadeadas:
+```bash
+gcc Questao1_2/main_questao1_2.c Questao1_2/questao1.c Questao1_2/questao2.c models/Vetor/Vetor.c models/Estatisticas/Estatisticas.c -o main -lm
+```
+### Questão 1 e 2 (Busca Sequencial e Binária)
+Este comando compila o programa de busca em vetores e listas encadeadas:
+```bash
+gcc Questao1_2/main_questao1_2.c Questao1_2/questao1.c Questao1_2/questao2.c models/Vetor/Vetor.c models/Estatisticas/Estatisticas.c -o main -lm
+```
