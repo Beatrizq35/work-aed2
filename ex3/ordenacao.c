@@ -1,9 +1,37 @@
+ 
 #include <stdlib.h> // malloc, free, exit
 #include <string.h> // printf
 #include <time.h>
+#include <stdio.h>
 #include <string.h> //para usar o memcpy para copiar o vetor base pro de teste
 #include "pontoordenacao.h"
 //Ao usar o ponteiro *v, você está passando apenas o endereço de memória onde o vetor começa. É muito mais rápido e econômico.
+// Cria a struct e aloca os dois vetores dinamicamente
+VetorTeste* criarVetores(unsigned tamanho) {
+    VetorTeste *vt = (VetorTeste*) malloc(sizeof(VetorTeste));
+    if (!vt) {
+        printf("Erro ao alocar struct\n");
+        exit(1);
+    }
+
+    vt->vetorBase  = (int*) malloc(tamanho * sizeof(int));
+    vt->vetorTeste = (int*) malloc(tamanho * sizeof(int));
+
+    if (!vt->vetorBase || !vt->vetorTeste) {
+        printf("Erro ao alocar vetores\n");
+        exit(1);
+    }
+
+    vt->tamanho = tamanho;
+    return vt;
+}
+
+// Libera toda a memória alocada
+void destruirVetores(VetorTeste *vt) {
+    free(vt->vetorBase);
+    free(vt->vetorTeste);
+    free(vt);
+}
 
 void insertionSort(int *v, int tamanho){
     int i, Pivot, j;
@@ -137,6 +165,3 @@ for(cont=0; cont < tamanho; cont++ ){
 void resetarVetor(int *destino, int *origem, int tamanho){
 memcpy(destino, origem, tamanho*sizeof(int));
 }
-
-
-

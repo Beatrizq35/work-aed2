@@ -78,9 +78,6 @@ int main(void) {
            calculaMedia(tempos_bin, EXECUCOES),
            desvioPadrao(tempos_bin, EXECUCOES));
 
-    clock_gettime(CLOCK_MONOTONIC, &t_q1_fim);
-    printf("Tempo total Q1   : %.6fs\n", calculaTempo(t_q1_inicio, t_q1_fim));
-
     // =========================================================
     // QUESTÃO 2 — Vetor vs Lista (Busca Sequencial)
     // =========================================================
@@ -129,9 +126,6 @@ int main(void) {
     printf("\n--- RESUMO Q2 ---\n");
     printf("Vetor | Media: %.8fs\n", calculaMedia(tempos_vet, EXECUCOES));
     printf("Lista | Media: %.8fs\n", calculaMedia(tempos_lst, EXECUCOES));
-
-    clock_gettime(CLOCK_MONOTONIC, &t_q2_fim);
-    printf("Tempo total Q2   : %.6fs\n", calculaTempo(t_q2_inicio, t_q2_fim));
 
     liberaVetor(v_desordenado);
     liberaVetor(v_ordenado);

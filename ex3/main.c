@@ -1,87 +1,80 @@
-#include <stdlib.h>  //malloc
+#include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 #include "pontoordenacao.h"
 
 #define TAMANHO 100000
-#define RODADAS 3
+#define RODADAS 10
 
 int main() {
+    // Cria os vetores via TAD (sem declarar array no main!)
+    VetorTeste *vt = criarVetores(TAMANHO);
 
-static int vetorBase[TAMANHO];
-static int vetorTeste[TAMANHO];
-clock_t inicio, fim;
-double tempo;
+    clock_t inicio, fim;
+    double tempo;
+    double somaBolha = 0, somaInsertion = 0, somaSelection = 0,
+           somaQuick = 0, somaMerge = 0;
 
-// soma dos tempos em s dos metodos de ordenaçao
-double somaBolha = 0, somaInsertion = 0, somaSelection = 0, somaQuick =0, somaMerge = 0;
+    srand(time(NULL));
 
-srand(time(NULL));
+    for (int r = 1; r <= RODADAS; r++) {
+        preencherVetorAleatoriamente(vt->vetorBase, TAMANHO);
+        printf("\n--------------Rodada %d--------------\n", r);
 
-for(int r =1; r<= RODADAS;r++){
+        // Insertion
+        resetarVetor(vt->vetorTeste, vt->vetorBase, TAMANHO);
+        inicio = clock();
+        insertionSort(vt->vetorTeste, TAMANHO);
+        fim = clock();
+        tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        printf("InsertionSort: %f s\n", tempo);
+        somaInsertion += tempo;
 
-// prenche o vetor base com numeros aleatorios em cada rodada 
-preencherVetorAleatoriamente(vetorBase, TAMANHO);
-printf("\n--------------Rodada %d--------------\n", r);
-// teste do insertion
-resetarVetor(vetorTeste, vetorBase, TAMANHO);
-inicio = clock();
-insertionSort(vetorTeste, 100000);
-fim = clock();
-tempo =((double) (fim-inicio)/ CLOCKS_PER_SEC);
-printf("InsertionSort: %f s\n", tempo);
-somaInsertion += tempo;
+        // Bubble
+        resetarVetor(vt->vetorTeste, vt->vetorBase, TAMANHO);
+        inicio = clock();
+        BubbleSort(vt->vetorTeste, TAMANHO);
+        fim = clock();
+        tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        printf("BubbleSort: %f s\n", tempo);
+        somaBolha += tempo;
 
-//testando o bolha
-resetarVetor(vetorTeste, vetorBase, TAMANHO);
-inicio= clock();
-BubbleSort(vetorTeste, TAMANHO);
-fim = clock();
-tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("BubbleSort: %f s\n", tempo);
-somaBolha += tempo;
+        // Selection
+        resetarVetor(vt->vetorTeste, vt->vetorBase, TAMANHO);
+        inicio = clock();
+        selectionSort(vt->vetorTeste, TAMANHO);
+        fim = clock();
+        tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        printf("SelectionSort: %f s\n", tempo);
+        somaSelection += tempo;
 
-//testando o selection 
-resetarVetor(vetorTeste, vetorBase, TAMANHO);
-inicio = clock();
-selectionSort(vetorTeste,TAMANHO);
-fim = clock();
-tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("SelectionSort: %f s\n", tempo);
-somaSelection += tempo;
+        // Quick
+        resetarVetor(vt->vetorTeste, vt->vetorBase, TAMANHO);
+        inicio = clock();
+        quickSort(vt->vetorTeste, 0, TAMANHO - 1);
+        fim = clock();
+        tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        printf("QuickSort: %f s\n", tempo);
+        somaQuick += tempo;
 
-// testatando o quick
-resetarVetor(vetorTeste, vetorBase, TAMANHO);
-inicio = clock();
-quickSort(vetorTeste,0,TAMANHO-1);
-fim = clock();
-tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("Quicksort: %f s\n", tempo);
-somaQuick += tempo;
+        // Merge
+        resetarVetor(vt->vetorTeste, vt->vetorBase, TAMANHO);
+        inicio = clock();
+        mergeSort(vt->vetorTeste, 0, TAMANHO - 1);
+        fim = clock();
+        tempo = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        printf("MergeSort: %f s\n", tempo);
+        somaMerge += tempo;
+    }
 
-// testando o mergesort 
+    printf("\n------Medias (%d rodadas)------\n", RODADAS);
+    printf("Bubble:    %f s\n", somaBolha    / RODADAS);
+    printf("Insertion: %f s\n", somaInsertion / RODADAS);
+    printf("Selection: %f s\n", somaSelection / RODADAS);
+    printf("Quick:     %f s\n", somaQuick    / RODADAS);
+    printf("Merge:     %f s\n", somaMerge    / RODADAS);
 
-resetarVetor(vetorTeste, vetorBase, TAMANHO);
-inicio= clock();
-mergeSort(vetorTeste,0, TAMANHO-1);
-fim = clock();
-tempo = ((double) (fim-inicio)/CLOCKS_PER_SEC);
-printf("MergeSort: %f s\n", tempo);
-somaMerge += tempo;
-}
-// calculo das medias 
-double mediaBolha = somaBolha / RODADAS;
-double mediaInsertion = somaInsertion / RODADAS;
-double mediaSelection = somaSelection / RODADAS;    
-double mediaQuick = somaQuick / RODADAS;
-double mediaMerge = somaMerge / RODADAS;
-
-printf("\n--------------Resultados Medias de Tempo para %d rodadas--------------", RODADAS);
-
-printf("\n\nMedia Bubble: %f s\n", mediaBolha);
-printf("Media Insertion: %f s\n", mediaInsertion);
-printf("Media Selection: %f s\n", mediaSelection);
-printf("Media Quick: %f s\n", mediaQuick);
-printf("Media Merge: %f s\n", mediaMerge);
-
+    // Libera memória ao final
+    destruirVetores(vt);
+    return 0;
 }
