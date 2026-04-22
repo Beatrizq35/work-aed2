@@ -20,3 +20,8 @@ gcc main.c ex1.c ex2.c -o programa_aed2
 gcc main.c ordenacao.c -o trabalho
 ./trabalho
 ```
+## Questai 5
+```bash
+gcc main.c ordenacao.c -o trabalho
+./trabalho
+```
