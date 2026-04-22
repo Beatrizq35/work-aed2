@@ -17,6 +17,6 @@ gcc main.c ex1.c ex2.c -o programa_aed2
 ### Questão 3 (Metodos de Ordenaçao)
 
 ```bash
-gcc main.c ordenacao.c -o trabalh.exe
+gcc main.c ordenacao.c -o trabalho.exe
 ./trabalho.exe
 ```
