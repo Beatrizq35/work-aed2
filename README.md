@@ -11,10 +11,12 @@ raiz do projeto (`Trabalho1_AED2/`) para executar os comandos abaixo:
 ### Questão 1 e 2 (Busca Sequencial e Binária)
 Este comando compila o programa de busca em vetores e listas encadeadas:
 ```bash
-gcc Questao1_2/main_questao1_2.c Questao1_2/questao1.c Questao1_2/questao2.c models/Vetor/Vetor.c models/Estatisticas/Estatisticas.c -o main -lm
+gcc main.c ex1.c ex2.c -o programa_aed2
+./programa_aed2
 ```
-### Questão 1 e 2 (Busca Sequencial e Binária)
-Este comando compila o programa de busca em vetores e listas encadeadas:
+### Questão 3 (Metodos de Ordenaçao)
+
 ```bash
-gcc Questao1_2/main_questao1_2.c Questao1_2/questao1.c Questao1_2/questao2.c models/Vetor/Vetor.c models/Estatisticas/Estatisticas.c -o main -lm
+gcc main.c ordenacao.c -o trabalh.exe
+./trabalho.exe
 ```
