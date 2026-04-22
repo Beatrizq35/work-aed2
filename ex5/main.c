@@ -54,16 +54,6 @@ int main(void) {
         liberaVetor(v_ord);
     }
 
-    // --- Médias Q1 ---
-    printf("\n--- MEDIA Q1 ---\n");
-    double soma_seq = 0.0, soma_bin = 0.0;
-    for (int t = 0; t < TAMANHOS_COUNT; t++) {
-        soma_seq += tempos_seq[t];
-        soma_bin += tempos_bin[t];
-    }
-    printf("Busca Sequencial | Media geral: %.8fs\n", soma_seq / TAMANHOS_COUNT);
-    printf("Busca Binaria    | Media geral: %.8fs\n", soma_bin / TAMANHOS_COUNT);
-
     printf("\n%-12s %-24s %-24s\n",
            "Tamanho", "Tempo/Elem Seq (ns)", "Tempo/Elem Bin (ns)");
     for (int t = 0; t < TAMANHOS_COUNT; t++) {
@@ -112,16 +102,6 @@ int main(void) {
         liberaVetor(v);
         liberaLista(l);
     }
-
-    // --- Médias Q2 ---
-    printf("\n--- MEDIA Q2 ---\n");
-    double soma_vet = 0.0, soma_lst = 0.0;
-    for (int t = 0; t < TAMANHOS_COUNT; t++) {
-        soma_vet += tempos_vet[t];
-        soma_lst += tempos_lst[t];
-    }
-    printf("Vetor | Media geral: %.8fs\n", soma_vet / TAMANHOS_COUNT);
-    printf("Lista | Media geral: %.8fs\n", soma_lst / TAMANHOS_COUNT);
 
     printf("\n%-12s %-24s %-24s\n",
            "Tamanho", "Tempo/Elem Vet (ns)", "Tempo/Elem Lst (ns)");

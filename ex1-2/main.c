@@ -112,9 +112,10 @@ int main(void) {
     }
 
     // --- Resultados Q2 ---
+
     printf("\n>>> COMPARATIVO BUSCA SEQUENCIAL (Vetor vs Lista):\n");
-    printf("%-10s %-15s %-15s %-12s %-16s %-16s\n",
-           "Execucao", "Vetor (s)", "Lista (s)", "Chave",
+    printf("%-10s %-15s %-15s %-12s %-16s %-16s\n", 
+           "Execucao", "Vetor (s)", "Lista (s)", "Chave", 
            "Res. Vetor", "Res. Lista");
     for (int i = 0; i < EXECUCOES; i++)
         printf("%-10d %-15.8f %-15.8f %-12d %-16s %-16s\n",
@@ -122,10 +123,14 @@ int main(void) {
                result_vet[i] ? "ENCONTRADO" : "NAO ENCONTRADO",
                result_lst[i] ? "ENCONTRADO" : "NAO ENCONTRADO");
 
-    /* CORRIGIDO: exibe média de cada estrutura conforme enunciado */
+    /* SEÇÃO ATUALIZADA: Agora exibe média e desvio padrão para a Questão 2 */
     printf("\n--- RESUMO Q2 ---\n");
-    printf("Vetor | Media: %.8fs\n", calculaMedia(tempos_vet, EXECUCOES));
-    printf("Lista | Media: %.8fs\n", calculaMedia(tempos_lst, EXECUCOES));
+    printf("Vetor | Media: %.8fs | Desvio Padrao: %.8fs\n", 
+           calculaMedia(tempos_vet, EXECUCOES),
+           desvioPadrao(tempos_vet, EXECUCOES));
+    printf("Lista | Media: %.8fs | Desvio Padrao: %.8fs\n", 
+           calculaMedia(tempos_lst, EXECUCOES),
+           desvioPadrao(tempos_lst, EXECUCOES));
 
     liberaVetor(v_desordenado);
     liberaVetor(v_ordenado);
